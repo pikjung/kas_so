@@ -83,4 +83,14 @@ class adminSalesController extends Controller
         return redirect()->back()->with(['success' => true, 'message' => 'Sales User successfully Updated']);
 
     }
+
+    public function hapus($id)
+    {
+        $sales = sales::findOrFail($id);
+        $user = User::find($sales->user_id);
+        $sales->delete();
+        $user->delete();
+
+        return redirect()->back()->with(['success' => true, 'message' => 'Sales successfully Deleted']);
+    }
 }
