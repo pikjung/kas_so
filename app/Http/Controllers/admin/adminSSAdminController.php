@@ -12,7 +12,7 @@ class adminSSAdminController extends Controller
     //
     public function index()
     {
-        $user = User::where('role_id',3)->get();
+        $user = User::where('role_id', 3)->get();
         return view('admin_kas.admin_ss.admin_ss', ['users' => $user]);
     }
 
@@ -38,5 +38,29 @@ class adminSSAdminController extends Controller
         ]);
 
         return redirect()->back()->with(['success' => true, 'message' => 'Admin SS successfully Created']);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+        ]);
+
+        if ($request->password != null) {
+            $password = Hash::make($request->password);
+        } else {
+            $password = $user->password;
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->password = $password;
+        $user->save();
+
+        return redirect()->back()->with(['success' => true, 'message' => 'Admin SS successfully Updated']);
     }
 }
