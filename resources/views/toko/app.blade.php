@@ -80,7 +80,7 @@
                             Riwayat Order
                         </div>
                     </a>
-                    <a class="dropdown-item d-flex align-items-center" href="/">
+                    <a class="dropdown-item d-flex align-items-center" href="/logout">
                         <div class="mr-3">
                             <i class="fa fa-sign-out-alt"></i>
                         </div>

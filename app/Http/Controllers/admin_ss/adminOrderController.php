@@ -6,6 +6,7 @@ use App\Models\order;
 use App\Models\order_detail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class adminOrderController extends Controller
 {
@@ -29,9 +30,11 @@ class adminOrderController extends Controller
         $order_detail = order_detail::find($id);
         if ($order_detail->check == 'tidak') {
             $order_detail->check = 'ya';
+            $order_detail->checked_by = Auth::id();
             $order_detail->save();
             return response()->json(['checked' => true, 'message' => 'Order checked'], 200);
         } else {
+            $order_detail->checked_by = 0;
             $order_detail->check = 'tidak';
             $order_detail->save();
             return response()->json(['checked' => false, 'message' => 'Order unChecked '], 200);
