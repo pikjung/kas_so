@@ -42,7 +42,7 @@ class tokoTroliController extends Controller
             return redirect()->back()->with(['status' => 'error', 'message' => 'Troli Anda Kosong']);
         }
         $pesan = "Halo admin\nAda Pesanan dengan detail sebagai berikut:\n";
-        $pesan = $pesan . $toko->nama_toko . "-" .$region->nama_region . "\n------------\n";
+        $pesan = $pesan . $toko->nama_toko . "-" .$region->nama_region . "\nKode Toko: ".$toko->kode_toko."\n------------\n";
         foreach ($brandTroli as $item) {
             $brand = brand::find($item->brand_id);
             $checkOrder = order::where('brand_id', $item->brand_id)->get();
