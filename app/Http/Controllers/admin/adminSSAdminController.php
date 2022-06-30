@@ -63,4 +63,12 @@ class adminSSAdminController extends Controller
 
         return redirect()->back()->with(['success' => true, 'message' => 'Admin SS successfully Updated']);
     }
+
+    public function hapus($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->back()->with(['success' => true, 'message' => 'Admin SS successfully deleted']);
+    }
 }
