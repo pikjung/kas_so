@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('nama_produk');
             $table->string('qty');
             $table->enum('check',['draft','ya','tidak'])->default('draft');
+            $table->integer('checked_by')->unsigned();
             $table->text('remark')->nullable();
             $table->timestamps();
         });
