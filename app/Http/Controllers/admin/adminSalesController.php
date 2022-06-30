@@ -22,7 +22,8 @@ class adminSalesController extends Controller
     public function show($id)
     {
         $sales = sales::findOrFail($id);
-        return response()->json(['sales' => $sales], 200);
+        $user = User::find($sales->user_id);
+        return response()->json(['sales' => $sales, 'user' => $user], 200);
     }
 
     public function tambah(Request $request)
@@ -49,5 +50,37 @@ class adminSalesController extends Controller
         ]);
 
         return redirect()->back()->with(['success' => true, 'message' => 'Sales successfully created']);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $sales = sales::findOrFail($id);
+        $request->validate([
+            'area_id' => 'required',
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = sales::findOrFail($sales->user_id);
+
+        if ($request->password != null) {
+            $password = Hash::make($request->password);
+        } else {
+            $password = $user->password;
+        }
+
+        $sales->area_id = $request->area_id;
+        $sales->save();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->password = $request->password;
+        $user->save();
+
+        return redirect()->back()->with(['success' => true, 'message' => 'Sales User successfully Updated']);
+
     }
 }
