@@ -26,10 +26,10 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->username}}</td>
                                     <td>
-                                        <button class="btn btn-warning btn-sm">
+                                        <button class="btn btn-warning btn-sm" onclick="editAdminSS({{$user->id}})">
                                             <i class="fa fa-edit"></i>
                                         </button>
-                                        <button class="btn btn-danger btn-sm">
+                                        <button class="btn btn-danger btn-sm" onclick="deleteAdminSS({{$user->id}})">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
