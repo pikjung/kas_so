@@ -36,8 +36,13 @@ class adminSalesController extends Controller
             'password' => 'required',
         ]);
 
+        $check = User::where('email', $request->email)->first();
+        if (!empty($check)) {
+            return redirect()->back()->withErrors('Email Sudah digunakan');
+        }
+
         $user = User::create([
-            'role_id' => '4',
+            'role_id' => 4,
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
@@ -60,10 +65,9 @@ class adminSalesController extends Controller
             'name' => 'required',
             'username' => 'required',
             'email' => 'required',
-            'password' => 'required',
         ]);
 
-        $user = sales::findOrFail($sales->user_id);
+        $user = user::findOrFail($sales->user_id);
 
         if ($request->password != null) {
             $password = Hash::make($request->password);
@@ -77,7 +81,7 @@ class adminSalesController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->username = $request->username;
-        $user->password = $request->password;
+        $user->password = $password;
         $user->save();
 
         return redirect()->back()->with(['success' => true, 'message' => 'Sales User successfully Updated']);

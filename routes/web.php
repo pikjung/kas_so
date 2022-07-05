@@ -9,17 +9,18 @@ use App\Http\Controllers\admin\adminTokoController;
 
 use App\Http\Controllers\admin\adminBrandController;
 use App\Http\Controllers\admin\adminPaketController;
+use App\Http\Controllers\admin\adminSalesController;
 use App\Http\Controllers\admin\adminSkemaController;
 use App\Http\Controllers\admin\adminRegionController;
 use App\Http\Controllers\admin\adminProductController;
 use App\Http\Controllers\admin\adminProjectController;
+use App\Http\Controllers\admin\adminSSAdminController;
 use App\Http\Controllers\toko\tokoDashboardController;
 use App\Http\Controllers\admin\adminFastMoveController;
+use App\Http\Controllers\admin_ss\adminOrderController;
 use App\Http\Controllers\admin\adminDashboardController;
 use App\Http\Controllers\toko\tokoRiwayatOrderController;
 use App\Http\Controllers\admin\adminFastMoveDetailController;
-use App\Http\Controllers\admin\adminSSAdminController;
-use App\Http\Controllers\admin_ss\adminOrderController;
 use App\Http\Controllers\admin_ss\adminRiwayatOrderController;
 
 /*
