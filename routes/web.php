@@ -165,6 +165,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin_kas/admin_ss/tambah', [adminSSAdminController::class, 'tambah']);
     Route::post('/admin_kas/admin_ss/edit/{id}', [adminSSAdminController::class, 'update']);
     Route::get('/admin_kas/admin_ss/hapus/{id}', [adminSSAdminController::class, 'hapus']);
+    
+    //sales
+    Route::get('/admin_kas/sales', [adminSalesController::class, 'index']);
+    Route::get('/admin_kas/sales/{id}', [adminSalesController::class, 'show']);
+    Route::post('/admin_kas/sales/tambah', [adminSalesController::class, 'tambah']);
+    Route::post('/admin_kas/sales/edit/{id}', [adminSalesController::class, 'update']);
+    Route::get('/admin_kas/sales/hapus/{id}', [adminSalesController::class, 'hapus']);
 });
 
 
