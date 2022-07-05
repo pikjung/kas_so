@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
 
 class adminSSAdminController extends Controller
@@ -27,14 +28,21 @@ class adminSSAdminController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
+        $check = User::where('email', $request->email)->first();
+        if (!empty($check)) {
+            return redirect()->back()->withErrors('Email Sudah digunakan');
+        }
+
         User::create([
-            'role_id' => 3,
             'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'role_id' => 3,
         ]);
 
         return redirect()->back()->with(['success' => true, 'message' => 'Admin SS successfully Created']);

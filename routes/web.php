@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\adminFastMoveController;
 use App\Http\Controllers\admin\adminDashboardController;
 use App\Http\Controllers\toko\tokoRiwayatOrderController;
 use App\Http\Controllers\admin\adminFastMoveDetailController;
+use App\Http\Controllers\admin\adminSSAdminController;
 use App\Http\Controllers\admin_ss\adminOrderController;
 use App\Http\Controllers\admin_ss\adminRiwayatOrderController;
 
@@ -157,6 +158,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin_kas/paket/edit/{id}', [adminPaketController::class, 'update']);
     Route::get('/admin_kas/paket/hapus/{id}', [adminPaketController::class, 'hapus']);
     Route::get('/admin_kas/paket/status/{id}', [adminPaketController::class, 'changeStatus']);
+
+    //Admin_ss
+    Route::get('/admin_kas/admin_ss', [adminSSAdminController::class, 'index']);
+    Route::get('/admin_kas/admin_ss/{id}', [adminSSAdminController::class, 'show']);
+    Route::post('/admin_kas/admin_ss/tambah', [adminSSAdminController::class, 'tambah']);
+    Route::post('/admin_kas/admin_ss/edit/{id}', [adminSSAdminController::class, 'update']);
+    Route::get('/admin_kas/admin_ss/hapus/{id}', [adminSSAdminController::class, 'hapus']);
 });
 
 

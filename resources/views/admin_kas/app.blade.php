@@ -111,7 +111,7 @@
                         <h6 class="collapse-header">Users Detail:</h6>
                         <a class="collapse-item" href="/admin_kas/toko">Toko</a>
                         <a class="collapse-item" href="/admin_kas/Sales">Sales</a>
-                        <a class="collapse-item" href="/admin_kas/admin">Admin SS</a>
+                        <a class="collapse-item" href="/admin_kas/admin_ss">Admin SS</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Me:</h6>
                         <a class="collapse-item" href="/admin_kas/setting">My Account</a>
