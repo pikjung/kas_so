@@ -22,6 +22,7 @@ use App\Http\Controllers\admin\adminDashboardController;
 use App\Http\Controllers\toko\tokoRiwayatOrderController;
 use App\Http\Controllers\admin\adminFastMoveDetailController;
 use App\Http\Controllers\admin_ss\adminRiwayatOrderController;
+use App\Http\Controllers\sales\salesOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login/action', [LoginController::class, 'actionlogin']);
 Route::get('/logout', [LoginController::class, 'actionlogout']);
 
+//TOKO
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [tokoDashboardController::class, 'index']);
     Route::get('/dashboard', [tokoDashboardController::class, 'index']);
@@ -67,6 +69,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/setting', [tokoOrderController::class, 'setting']);
 });
 
+
+//OPERATOR
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin_kas', [adminDashboardController::class, 'index']);
 
@@ -175,7 +179,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin_kas/sales/hapus/{id}', [adminSalesController::class, 'hapus']);
 });
 
-
+//ADMIN SS
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/admin_ss', [adminOrderController::class, 'index']);
@@ -190,5 +194,28 @@ Route::middleware(['auth'])->group(function () {
     //Riwayat Order
     Route::get('/admin_ss/riwayat_order', [adminRiwayatOrderController::class, 'index']);
     Route::get('/admin_ss/riwayat_order/{id}', [adminRiwayatOrderController::class, 'show']);
+
+});
+
+//SALES
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/sales', [salesDashboardController::class, 'index']);
+
+    Route::get('/order/{id}/{param}', [tokoOrderController::class, 'brand']);
+    Route::get('/order/favorit/detail/{id}', [tokoOrderController::class, 'favoritDetail']);
+    Route::get('/order/favorit/pilihFastMove/{id}', [tokoOrderController::class, 'pilihFastMove']);
+    Route::post('/order/troli/lainnya', [tokoOrderController::class, 'troliLainnya']);
+    Route::post('/order/troli/favorit', [tokoOrderController::class, 'troliFavorit']);
+    Route::post('/order/troli/paket', [tokoOrderController::class, 'troliPaket']);
+
+    Route::get('/sales/order', [salesOrderController::class, 'index']);
+    Route::get('/sales/order/{id}/{param}', [salesOrderController::class, 'brand']);
+    Route::get('/sales/order/favorit/detail/{id}', [salesOrderController::class, 'favoritDetail']);
+    Route::get('/sales/order/favorit/pilihFastMove/{id}', [salesOrderController::class, 'pilihFastMove']);
+    Route::post('/sales/order/troli/lainnya', [salesOrderController::class, 'troliLainnya']);
+    Route::post('/sales/order/troli/favorit', [salesOrderController::class, 'troliFavorit']);
+    Route::post('/sales/order/troli/paket', [salesOrderController::class, 'troliPaket']);
+
 
 });
