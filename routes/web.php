@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\adminBrandController;
 use App\Http\Controllers\admin\adminPaketController;
 use App\Http\Controllers\admin\adminSalesController;
 use App\Http\Controllers\admin\adminSkemaController;
+use App\Http\Controllers\sales\salesOrderController;
 use App\Http\Controllers\admin\adminRegionController;
 use App\Http\Controllers\admin\adminProductController;
 use App\Http\Controllers\admin\adminProjectController;
@@ -19,10 +20,10 @@ use App\Http\Controllers\toko\tokoDashboardController;
 use App\Http\Controllers\admin\adminFastMoveController;
 use App\Http\Controllers\admin_ss\adminOrderController;
 use App\Http\Controllers\admin\adminDashboardController;
+use App\Http\Controllers\sales\salesDashboardController;
 use App\Http\Controllers\toko\tokoRiwayatOrderController;
 use App\Http\Controllers\admin\adminFastMoveDetailController;
 use App\Http\Controllers\admin_ss\adminRiwayatOrderController;
-use App\Http\Controllers\sales\salesOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -202,12 +203,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/sales', [salesDashboardController::class, 'index']);
 
-    Route::get('/order/{id}/{param}', [tokoOrderController::class, 'brand']);
-    Route::get('/order/favorit/detail/{id}', [tokoOrderController::class, 'favoritDetail']);
-    Route::get('/order/favorit/pilihFastMove/{id}', [tokoOrderController::class, 'pilihFastMove']);
-    Route::post('/order/troli/lainnya', [tokoOrderController::class, 'troliLainnya']);
-    Route::post('/order/troli/favorit', [tokoOrderController::class, 'troliFavorit']);
-    Route::post('/order/troli/paket', [tokoOrderController::class, 'troliPaket']);
+    // Route::get('/order/{id}/{param}', [tokoOrderController::class, 'brand']);
+    // Route::get('/order/favorit/detail/{id}', [tokoOrderController::class, 'favoritDetail']);
+    // Route::get('/order/favorit/pilihFastMove/{id}', [tokoOrderController::class, 'pilihFastMove']);
+    // Route::post('/order/troli/lainnya', [tokoOrderController::class, 'troliLainnya']);
+    // Route::post('/order/troli/favorit', [tokoOrderController::class, 'troliFavorit']);
+    // Route::post('/order/troli/paket', [tokoOrderController::class, 'troliPaket']);
 
     Route::get('/sales/order', [salesOrderController::class, 'index']);
     Route::get('/sales/order/{id}/{param}', [salesOrderController::class, 'brand']);
