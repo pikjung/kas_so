@@ -25,14 +25,19 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            Nama Produk: <b>{{ $troli->nama_produk }}</b>
+                            <h5>Brand: <b>{{ $troli->brand->nama_brand }}</b></h5>
+                            <hr>
                         </div>
-                        <div class="col-12">
-                            QTY: <b>{{ $troli->qty }}</b>
+                        <div class="col-10" style="font-size: 12px">
+                            <?php $no = 1 ?>
+                            @foreach ($troli->brand->troli as $item)
+                                {{ $no }}.  Nama Produk: <b>{{ $item->nama_produk }}</b> | QTY : <b>{{ $item->qty }}</b> <br>
+                                <?php $no++ ?>
+                            @endforeach
                         </div>
-                        <div class="col-12">
-                            <button class="btn btn-danger float-right" onclick='hapusTroli("{{ $troli->id }}")'>
-                                <i class="fa fa-trash"></i>
+                        <div class="col-2">
+                            <button class="btn btn-warning float-right" onclick='detailTroli("{{ $troli->brand_id }}")'>
+                                <i class="fa fa-edit"></i>
                             </button>
                         </div>
                     </div>

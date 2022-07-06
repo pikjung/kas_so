@@ -18,7 +18,7 @@ class tokoTroliController extends Controller
     //
     public function index()
     {
-        $troli = troli::where('user_id', Auth::id())->get();
+        $troli = troli::select('brand_id')->where('user_id', Auth::id())->groupBy('brand_id')->get();
         return view('toko.troli.troli', ['trolis' => $troli]);
     }
 
