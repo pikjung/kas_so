@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('trolis', function (Blueprint $table) {
             $table->id();
+            $table->string('ordered_by');
             $table->integer('user_id')->unsigned();
             $table->integer('brand_id')->unsigned();
             $table->integer('reference_id')->unsigned();

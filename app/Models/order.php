@@ -9,7 +9,7 @@ class order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['brand_id','user_id','nama_order','tgl_order','status','note'];
+    protected $fillable = ['brand_id','user_id','nama_order','tgl_order','status','note','ordered_by','confirm_by'];
 
     public function brand()
     {

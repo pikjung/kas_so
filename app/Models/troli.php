@@ -9,7 +9,7 @@ class troli extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['brand_id','type','reference_id','nama_produk','qty','user_id'];
+    protected $fillable = ['brand_id','type','reference_id','nama_produk','qty','user_id','ordered_by'];
 
     public function brand()
     {

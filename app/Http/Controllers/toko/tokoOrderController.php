@@ -55,6 +55,7 @@ class tokoOrderController extends Controller
         $user_id = User::find(Auth::id());
 
         troli::create([
+            'ordered_by' => 'toko',
             'user_id' => Auth::id(),
             'brand_id' => $produk->brand_id,
             'reference_id' => $produk->id,
@@ -80,6 +81,7 @@ class tokoOrderController extends Controller
         $user_id = User::find(Auth::id());
     
         troli::create([
+            'ordered_by' => 'toko',
             'user_id' => Auth::id(),
             'brand_id' => $request->brand_id,
             'reference_id' => $request->fast_move_id,
@@ -102,6 +104,7 @@ class tokoOrderController extends Controller
         $paket = paket::find($request->id);
     
         troli::create([
+            'ordered_by' => 'toko',
             'user_id' => Auth::id(),
             'brand_id' => $paket->brand_id,
             'reference_id' => $paket->id,
